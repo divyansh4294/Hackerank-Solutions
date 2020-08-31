@@ -1,0 +1,38 @@
+Consider the following:
+
+A string, , of length  where .
+An integer, , where  is a factor of .
+We can split  into  subsegments where each subsegment, , consists of a contiguous block of  characters in . Then, use each  to create string  such that:
+
+The characters in  are a subsequence of the characters in .
+Any repeat occurrence of a character is removed from the string such that each character in  occurs exactly once. In other words, if the character at some index  in  occurs at a previous index  in , then do not include the character in string .
+Given  and , print  lines where each line  denotes string .
+
+
+Solution in Python 3 as follows
+
+# Find the distinct characters in string in the same order they arrived
+def res(l):
+    u=""
+    for f in l:
+        if f not in u:
+            u += f
+    return u
+
+
+def merge_the_tools(string, k):
+		# divide the input string into desired length of size k 
+    ls =[]
+    num_subsegments = int(len(string) / k)
+    for index in range(num_subsegments):
+        t = string[index * k : (index + 1) * k]
+        ls.append(t)
+    # Subsequence string having distinct characters
+    for i in ls:
+        x = res(i)
+        print(x)
+
+if __name__ == '__main__':
+    string, k = input(), int(input())
+    merge_the_tools(string, k)
+    for index in range(num_subsegments):
